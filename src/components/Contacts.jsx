@@ -4,9 +4,20 @@ import { deleteContact } from '../redux/contactsBook/contacts/contacts-slice';
 
 import PropTypes from 'prop-types';
 import { getContacts } from 'redux/contactsBook/contacts/contacts-selector';
+import { getFilter } from 'redux/contactsBook/filter/filter-selector';
+
+ const getFiltredContacts = (contacts, filterValue) => {
+  
+  const normalizedFilter = filterValue.toLocaleLowerCase();
+  const filtredData = contacts.filter(({ name }) =>
+    name.toLowerCase().includes(normalizedFilter) 
+  );
+  return filtredData
+};
 
 export const ContactsList = () => {
-  
+  const filter = useSelector(getFilter);
+
   const contacts = useSelector(getContacts)
 
   const dispatch = useDispatch();
@@ -17,7 +28,7 @@ export const ContactsList = () => {
 
   return (
     <ol>
-      {contacts.map(({ id, name, number }) => (
+      {getFiltredContacts(contacts, filter).map(({ id, name, number }) => (
         <li key={id}>
           {name} : {number}{' '}
           <button type="button" onClick={onDelete}>

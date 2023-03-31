@@ -14,11 +14,11 @@ const initialValues = {
 export const Phonebook = () => {
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
-  console.log(contacts);
 
   const isDublicate = (contacts, newContact) => {
     return contacts.some(contacts => contacts.name === newContact.name);
   };
+  
   const onAddContact = (newContact, actions) => {
     if (isDublicate(contacts, newContact)) {
       alert(`${newContact.name} is already in contacts 👀`);
@@ -62,6 +62,6 @@ export const Phonebook = () => {
   );
 };
 
-Phonebook.propTypes = {
-  onSave: PropTypes.func.isRequired,
-};
+// Phonebook.propTypes = {
+//   onAddContact: PropTypes.func.isRequired,
+// };
