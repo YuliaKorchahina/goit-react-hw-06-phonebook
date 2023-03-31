@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { getContacts } from 'redux/contactsBook/contacts/contacts-selector';
-import { addContact } from '../redux/contactsBook/contacts/contacts-actions';
+import { addContact } from '../redux/contactsBook/contacts/contacts-slice';
 
 import { Formik, Field } from 'formik';
 import { FormField, Form, ErrorMessage } from './FormStyle.styled';

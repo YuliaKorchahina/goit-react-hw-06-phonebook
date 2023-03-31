@@ -1,12 +1,26 @@
-import PropTypes from 'prop-types';
+import {useSelector, useDispatch } from 'react-redux';
 
-export const ContactsList = ({ contacts, onDelete }) => {
+import { deleteContact } from '../redux/contactsBook/contacts/contacts-slice';
+
+import PropTypes from 'prop-types';
+import { getContacts } from 'redux/contactsBook/contacts/contacts-selector';
+
+export const ContactsList = () => {
+  
+  const contacts = useSelector(getContacts)
+
+  const dispatch = useDispatch();
+
+  const onDelete = () => {
+    dispatch(deleteContact(contacts.id));
+  };
+
   return (
     <ol>
       {contacts.map(({ id, name, number }) => (
         <li key={id}>
           {name} : {number}{' '}
-          <button type="button" onClick={() => onDelete(id)}>
+          <button type="button" onClick={onDelete}>
             ❌
           </button>
         </li>
