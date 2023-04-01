@@ -4,7 +4,7 @@ import { addContact } from '../redux/contactsBook/contacts/contacts-slice';
 
 import { Formik, Field } from 'formik';
 import { FormField, Form, ErrorMessage } from './FormStyle.styled';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const initialValues = {
   name: '',
@@ -62,6 +62,7 @@ export const Phonebook = () => {
   );
 };
 
-// Phonebook.propTypes = {
-//   onAddContact: PropTypes.func.isRequired,
-// };
+Phonebook.propTypes = {
+  isDublicate: PropTypes.func,
+  onAddContact:  PropTypes.func
+};
