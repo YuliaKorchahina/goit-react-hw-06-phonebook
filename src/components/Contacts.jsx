@@ -2,18 +2,21 @@ import {useSelector, useDispatch } from 'react-redux';
 
 import { deleteContact } from '../redux/contactsBook/contacts/contacts-slice';
 
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { getContacts } from 'redux/contactsBook/contacts/contacts-selector';
 import { getFilter } from 'redux/contactsBook/filter/filter-selector';
 
  const getFiltredContacts = (contacts, filterValue) => {
-  
   const normalizedFilter = filterValue.toLocaleLowerCase();
-  const filtredData = contacts.filter(({ name }) =>
+  // if (!filterValue){
+  //   return []
+  // } else {
+    const filtredData = contacts.filter(({ name }) =>
     name.toLowerCase().includes(normalizedFilter) 
   );
-  return filtredData
-};
+  return filtredData}
+  
+// };
 
 export const ContactsList = () => {
   const filter = useSelector(getFilter);
@@ -40,13 +43,13 @@ export const ContactsList = () => {
   );
 };
 
-ContactsList.propTypes = {
-  contacts: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
-      number: PropTypes.string.isRequired,
-    })
-  ).isRequired,
-  onDelete: PropTypes.func.isRequired,
-};
+// ContactsList.propTypes = {
+//   contacts: PropTypes.arrayOf(
+//     PropTypes.shape({
+//       id: PropTypes.string.isRequired,
+//       name: PropTypes.string.isRequired,
+//       number: PropTypes.string.isRequired,
+//     })
+//   ).isRequired,
+//   onDelete: PropTypes.func.isRequired,
+// };

@@ -4,7 +4,7 @@ import { addContact } from '../redux/contactsBook/contacts/contacts-slice';
 
 import { Formik, Field } from 'formik';
 import { FormField, Form, ErrorMessage } from './FormStyle.styled';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 const initialValues = {
   name: '',
@@ -16,7 +16,7 @@ export const Phonebook = () => {
   const dispatch = useDispatch();
 
   const isDublicate = (contacts, newContact) => {
-    return contacts.some(contacts => contacts.name === newContact.name);
+    return contacts.some(data => data.name === newContact.name);
   };
   
   const onAddContact = (newContact, actions) => {
